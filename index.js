@@ -1,9 +1,9 @@
 const mergeArrayByName = require('./lib/mergeArrayByName')
 
-module.exports = (app, _, Settings = require('./lib/settings')) => {
-  app.log.info('Ready, waiting for payloads...')
+module.exports = (robot, _, Settings = require('./lib/settings')) => {
+  robot.log.info('Ready, waiting for payloads...')
 
-  app.on('push', async context => {
+  robot.on('push', async context => {
     context.log.debug('context: %O', context)
 
     const payload = context.payload
