@@ -1,7 +1,11 @@
 const mergeArrayByName = require('./lib/mergeArrayByName')
 
 module.exports = (robot, _, Settings = require('./lib/settings')) => {
-  robot.on('push', async context => {
+  robot.log.info('Ready, waiting for payloads...')
+
+  app.on('push', async context => {
+    context.log.debug('context: %O', context)
+
     const payload = context.payload
     const defaultBranch = payload.ref === 'refs/heads/' + payload.repository.default_branch
 
