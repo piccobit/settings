@@ -6,11 +6,12 @@ module.exports = (robot, _, Settings = require('./lib/settings')) => {
     const defaultBranch = payload.ref === 'refs/heads/' + payload.repository.default_branch
 
     if (!defaultBranch) {
-      // Not the default branch, nothing to see here!
-      return;
+      context.log.info('Not the default branch, nothing to see here!')
+      return
     }
+
     const config = await context.config('settings.yml', {}, { arrayMerge: mergeArrayByName })
 
-      return Settings.sync(context.github, context.repo(), config)
+    return Settings.sync(context.github, context.repo(), config)
   })
 }
